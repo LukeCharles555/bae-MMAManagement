@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.persistance.domain.Manager;
 import com.bae.service.ManagerService;
 
+@RestController
+@RequestMapping("/managerapp")
 public class ManagerController {
 
 	private ManagerService managerService;
@@ -22,7 +26,7 @@ public class ManagerController {
 	
 	@GetMapping("/manager")
 	public List<Manager> getAllManagers() {
-		return managerService.getAllManagers;
+		return managerService.getAllManagers();
 	}
 	
 	@PostMapping("/manager")

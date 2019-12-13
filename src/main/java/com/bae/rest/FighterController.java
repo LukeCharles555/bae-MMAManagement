@@ -26,7 +26,7 @@ public class FighterController {
 	
 	@GetMapping("/fighters")
 	public List<Fighters> getAllFighters() {
-		return fighterService.getAllFighters;
+		return fighterService.getAllFighters();
 	}
 	
 	@PostMapping("/fighters")
