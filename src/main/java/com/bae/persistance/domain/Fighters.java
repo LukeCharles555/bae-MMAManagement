@@ -17,7 +17,7 @@ public class Fighters {
 	private Long fighterID;
 
 	@ManyToOne
-	@JoinColumn(name="managerID",nullable = false)
+	@JoinColumn(name="managerID")
 	private Manager manager;
 	
 	private String firstName;

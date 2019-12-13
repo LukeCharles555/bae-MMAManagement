@@ -1,7 +1,9 @@
 package com.bae.persistance.domain;
 
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +18,7 @@ public class Manager {
 	@GeneratedValue
 	private Long managerID;
 	
-	@OneToMany(mappedBy="manager")
+	@OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
 	private Set<Fighters> fighters;
 	
 	private String username;

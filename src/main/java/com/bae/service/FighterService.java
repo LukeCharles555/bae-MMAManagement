@@ -24,10 +24,6 @@ public class FighterService {
 	}
 	
 	private void setUpFighters() {
-		Fighters joe = new Fighters("Joe", "Jeffries", 66, 180);
-		Fighters craig = new Fighters("Craig", "Chris", 70, 170);
-		fighterRepo.save(joe);
-		fighterRepo.save(craig);
 	}
 	
 	public Fighters addNewFighter(Fighters fighter) {

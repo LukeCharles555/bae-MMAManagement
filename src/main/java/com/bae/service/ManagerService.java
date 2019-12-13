@@ -2,9 +2,12 @@ package com.bae.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.bae.persistance.domain.Manager;
 import com.bae.persistance.repository.ManagerRepository;
 
+@Service
 public class ManagerService {
 
 	private ManagerRepository managerRepo;
@@ -21,8 +24,6 @@ public class ManagerService {
 	}
 	
 	private void setUpManagers() {
-		Manager jeff = new Manager("MyNameIsJeff");
-		managerRepo.save(jeff);
 	}
 	
 	public Manager addNewManager(Manager manager) {
