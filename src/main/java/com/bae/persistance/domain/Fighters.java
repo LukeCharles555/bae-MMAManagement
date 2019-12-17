@@ -1,25 +1,17 @@
 package com.bae.persistance.domain;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.GenerationType;
 
 @Entity
-@Table(name="FIGHTERS")
 public class Fighters {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long fighterID;
-
-	@ManyToOne
-	@JoinColumn(name="managerID")
-	private Manager manager;
-	
 	private String firstName;
 	private String lastName;
 	private int height;
@@ -74,14 +66,6 @@ public class Fighters {
 	
 	public void setWeight(int weight) {
 		this.weight = weight;
-	}
-	
-	public Manager getManager() {
-		return manager;
-	}
-
-	public void setManager(Manager manager) {
-		this.manager = manager;
 	}
 
 	@Override

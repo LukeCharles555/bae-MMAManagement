@@ -38,4 +38,8 @@ public class ManagerService {
 		managerRepo.deleteById(managerID);
 		return "Manager successfully deleted";
 	}
+
+	public Manager getManagerByID(Long managerID) {
+		return managerRepo.getOne(managerID);
+	}
 }

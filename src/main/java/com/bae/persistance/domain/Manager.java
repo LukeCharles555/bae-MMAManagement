@@ -4,25 +4,36 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 @Entity
-@Table(name="MANAGER")
 public class Manager {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long managerID;
-	
-	@OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
-	private Set<Fighters> fighters;
-	
 	private String username;
 	private String password;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "managerID")
+	private List<Fighters> fighters;
+	
+	public List<Fighters> getFighters() {
+		return fighters;
+	}
+
+	public void setFighters(List<Fighters> fighters) {
+		this.fighters = fighters;
+	}
+
 	
 	public Manager() {
 	}
@@ -54,14 +65,6 @@ public class Manager {
 	
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	public Set<Fighters> getFighters() {
-		return fighters;
-	}
-	
-	public void setFighters(Set<Fighters> fighters) {
-		this.fighters = fighters;
 	}
 	
 	@Override
