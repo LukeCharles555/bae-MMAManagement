@@ -17,13 +17,7 @@ public class FighterService {
 	}
 	
 	public List<Fighters> getAllFighters() {
-		if (fighterRepo.findAll().isEmpty()) {
-			setUpFighters();
-		}
 		return fighterRepo.findAll();
-	}
-	
-	private void setUpFighters() {
 	}
 	
 	public Fighters addNewFighter(Fighters fighter) {

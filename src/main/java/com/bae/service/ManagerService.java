@@ -17,13 +17,7 @@ public class ManagerService {
 	}
 	
 	public List<Manager> getAllManagers() {
-		if (managerRepo.findAll().isEmpty()) {
-			setUpManagers();
-		}
 		return managerRepo.findAll();
-	}
-	
-	private void setUpManagers() {
 	}
 	
 	public Manager addNewManager(Manager manager) {
