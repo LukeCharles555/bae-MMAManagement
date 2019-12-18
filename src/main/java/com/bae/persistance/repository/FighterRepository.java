@@ -5,4 +5,6 @@ import com.bae.persistance.domain.Fighters;
 
 public interface FighterRepository extends JpaRepository<Fighters, Long> {
 
+	Object findByFirstName(String test_FIRST_NAME);
+
 }
