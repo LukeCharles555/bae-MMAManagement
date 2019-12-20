@@ -74,6 +74,51 @@ public class Fighters {
 				+ ", weight=" + weight + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((fighterID == null) ? 0 : fighterID.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + height;
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + weight;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fighters other = (Fighters) obj;
+		if (fighterID == null) {
+			if (other.fighterID != null)
+				return false;
+		} else if (!fighterID.equals(other.fighterID))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (height != other.height)
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (weight != other.weight)
+			return false;
+		return true;
+	}
+	
+	
+
 	
 	
 }

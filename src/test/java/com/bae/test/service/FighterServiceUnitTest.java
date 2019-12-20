@@ -1,12 +1,14 @@
 package com.bae.test.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -52,5 +54,40 @@ public class FighterServiceUnitTest {
 		assertEquals(this.testFighterWithID, this.service.addNewFighter(testFighter));
 		
 		verify(this.repo, times(1)).save(this.testFighter);
+	}
+	
+	@Test
+	public void deleteFighterTest() {
+		when(this.repo.existsById(fighterID)).thenReturn(true, false);
+		
+		this.service.deleteFighter(fighterID);
+		
+		verify(this.repo, times(1)).deleteById(fighterID);
+		verify(this.repo, times(2)).existsById(fighterID);
+	}
+	
+	@Test
+	public void getAllFightersTest() {
+		when(repo.findAll()).thenReturn(this.fighterList);
+		
+		assertFalse("Controller has found no fighters", this.service.getAllFighters().isEmpty());
+		
+		verify(repo, times(1)).findAll();
+	}
+	
+	@Test
+	public void updateFightersTest() {
+		Fighters newFighter = new Fighters("John", "Greg", 80, 180);
+		Fighters updatedFighter = new Fighters(newFighter.getFirstName(), newFighter.getLastName(), newFighter.getHeight(), newFighter.getWeight());
+		updatedFighter.setFighterID(fighterID);		
+		when(this.repo.findById(this.fighterID)).thenReturn(Optional.of(this.testFighterWithID));
+		when(this.repo.save(updatedFighter)).thenReturn(updatedFighter);
+		
+		assertEquals(updatedFighter, this.service.updateFighter(newFighter));
+		
+		verify(this.repo, times(1)).findById(1L);
+		verify(this.repo, times(1)).save(updatedFighter);
+		
+		
 	}
 }
