@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="ProjectFrontEnd.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            body {
+                background: linear-gradient(to right, aliceblue, white);
+            }
+        </style>
+    </head>
+
+    <body>
+            <div class="banner" style="padding:20px; text-align:center; -webkit-text-fill-color:white; background:linear-gradient(to right, black, grey); z-index: 1;">
+                    <div class="banner-content">
+                    <h1>MMA Manager</h1>
+                    </div>
+            </div>
+        <br>
+        <div class="sidenav">
+            <br><br><br>
+            <a href="#">Home</a>
+            <a href="#">Fighter App</a>
+            <a href="#">Fighter Statistics</a>
+        </div>
+    <div class="main">
+        <div class="card" style="width: 40rem;">
+            <div class="card-header">
+                <b>List of fighters:</b>
+            </div>
+            <ul class="list-group list-group-flush" id="fighersList">
+            <div id="li">
+              <li class="list-group-item">Joe Bloggs</li>
+              <li class="list-group-item">Arny Schwarz</li>
+              <li class="list-group-item">Mr T</li>
+            </div>
+            </ul>
+          </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr width="2000" style="border: 2px dashed #C0C0C0" color="#FFFFFF" size="6" style="z-index: -2">
+    <br>
+    <br>
+    <div class="main">
+        <div class="card" style="width: 40rem;">
+            <div class="card-header">
+                <b>Add new fighter:</b>
+            </div>
+            <br>
+            <div>
+                <input id="firstName" type="text" placeholder="First Name" name="firstName" size="86"/>
+            </div>
+            <br>
+            <div>
+                <input id="secondName" type="text" placeholder="Second Name" name="secondName" size="86"/>
+            </div>
+            <br>
+            <div>
+                <input id="height" type="text" placeholder="Height" name="height" size="86"/>
+            </div>
+            <br>
+            <div>
+                <input id="weight" type="text" placeholder="Weight" name="weight" size="86"/>
+            </div>
+            <br>
+        </div>
+        <button id="submit"></button>
+    </div>
+    <button id="submit" onclick="submit();">SUBMIT</button>
+    <script src="ProjectFrontEnd.js"></script>
+    </body>
+</html>
