@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.bae.exceptions.FighterNotFoundException;
 import com.bae.persistance.domain.Fighters;
 import com.bae.persistance.repository.FighterRepository;
 
@@ -29,6 +30,9 @@ public class FighterService {
 	}
 	
 	public String deleteFighter(Long fighterID) {
+		if (!this.fighterRepo.existsById(fighterID)) {
+			throw new FighterNotFoundException();
+		}
 		fighterRepo.deleteById(fighterID);
 		return "Fighter successfully deleted";
 	}
