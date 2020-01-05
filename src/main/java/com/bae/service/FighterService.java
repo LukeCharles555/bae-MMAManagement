@@ -29,12 +29,13 @@ public class FighterService {
 		return fighterRepo.save(fighter);
 	}
 	
-	public String deleteFighter(Long fighterID) {
+	public boolean deleteFighter(Long fighterID) {
 		if (!this.fighterRepo.existsById(fighterID)) {
 			throw new FighterNotFoundException();
 		}
-		fighterRepo.deleteById(fighterID);
-		return "Fighter successfully deleted";
+		
+		this.fighterRepo.deleteById(fighterID);
+		return this.fighterRepo.existsById(fighterID);
 	}
 	
 	

@@ -86,8 +86,8 @@ public class FighterServiceUnitTest {
 		assertEquals(updatedFighter, this.service.updateFighter(updatedFighter));
 		
 //		verify(this.repo, times(1)).findById(1L);
-		verify(this.repo, times(1)).save(updatedFighter);
-		
-		
+		verify(this.repo, times(2)).existsById(fighterID);
 	}
+	
+
 }

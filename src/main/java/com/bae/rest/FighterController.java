@@ -45,7 +45,7 @@ public class FighterController {
 	}
 	
 	@DeleteMapping("/fighters/{fighterID}")
-	public String deleteFighter(@PathVariable(value = "fighterID") Long fighterID) {
-		return fighterService.deleteFighter(fighterID);
+	public void deleteFighter(@PathVariable Long fighterID) {
+		this.fighterService.deleteFighter(fighterID);
 	}
 }
