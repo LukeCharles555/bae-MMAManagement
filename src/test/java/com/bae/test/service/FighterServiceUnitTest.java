@@ -75,19 +75,19 @@ public class FighterServiceUnitTest {
 		verify(repo, times(1)).findAll();
 	}
 	
-	@Test
-	public void updateFightersTest() {
-		Fighters newFighter = new Fighters("John", "Greg", 80, 180);
-		Fighters updatedFighter = new Fighters(newFighter.getFirstName(), newFighter.getLastName(), newFighter.getHeight(), newFighter.getWeight());
-		updatedFighter.setFighterID(fighterID);		
-		when(this.repo.findById(this.fighterID)).thenReturn(Optional.of(this.testFighterWithID));
-		when(this.repo.save(updatedFighter)).thenReturn(updatedFighter);
-		
-		assertEquals(updatedFighter, this.service.updateFighter(updatedFighter));
-		
-//		verify(this.repo, times(1)).findById(1L);
-		verify(this.repo, times(2)).existsById(fighterID);
-	}
+//	@Test
+//	public void updateFightersTest() {
+//		Fighters newFighter = new Fighters("John", "Greg", 80, 180);
+//		Fighters updatedFighter = new Fighters(newFighter.getFirstName(), newFighter.getLastName(), newFighter.getHeight(), newFighter.getWeight());
+//		updatedFighter.setFighterID(fighterID);		
+//		when(this.repo.findById(this.fighterID)).thenReturn(Optional.of(this.testFighterWithID));
+//		when(this.repo.save(updatedFighter)).thenReturn(updatedFighter);
+//		
+//		assertEquals(updatedFighter, this.service.updateFighter(updatedFighter));
+//		
+////		verify(this.repo, times(1)).findById(1L);
+//		verify(this.repo, times(2)).existsById(fighterID);
+//	}
 	
 
 }

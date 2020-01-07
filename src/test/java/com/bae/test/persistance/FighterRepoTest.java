@@ -16,20 +16,20 @@ import com.bae.persistance.repository.FighterRepository;
 @DataJpaTest
 public class FighterRepoTest {
 	
-//	@Autowired
-//	private FighterRepository fighterRepo;
-//
-//	private final String TEST_FIRST_NAME = "John";
-//	
-//	private final Fighters TEST_FIGHTER = new Fighters(TEST_FIRST_NAME, "Greg", 60, 180);
-//	
-//	private Fighters testSavedFighter;
-//	
-//	@Before
-//	public void init() {
-//		this.fighterRepo.deleteAll();
-//		this.testSavedFighter = this.fighterRepo.save(this.TEST_FIGHTER);
-//	}
-//	
+	@Autowired
+	private FighterRepository fighterRepo;
+
+	private final String TEST_FIRST_NAME = "John";
+	
+	private final Fighters TEST_FIGHTER = new Fighters(TEST_FIRST_NAME, "Greg", 60, 180);
+	
+	private Fighters testSavedFighter;
+	
+	@Before
+	public void init() {
+		this.fighterRepo.deleteAll();
+		this.testSavedFighter = this.fighterRepo.save(this.TEST_FIGHTER);
+	}
+	
 	
 }
