@@ -18,19 +18,20 @@
         <br>
         <div class="sidenav">
             <br><br><br>
-            <a href='Home.html'>Home</a> 
+            <a href='index.html'>Home</a> 
             <a href='FighterApp.html'>Fighter App</a>
             <a href='FighterStats.html'>Fighter Statistics</a>
         </div>
 
         <div id="FighterStatistics" class="tabcontent">
-                    <table class="table">
+                    <table class="table" id="statsTable">
                             <thead class="thead-dark">
                             <tr>
                                 <th scope="col">id</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Height (inches)</th>
                                 <th scope="col">Weight (pounds)</th>
+                                <th scope="col">Manager id</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,22 +40,26 @@
                                 <td>Mr T</td>
                                 <td>70</td>
                                 <td>200</td>
+                                <td>N/A</td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
                                 <td>Arny Schwarz</td>
                                 <td>75</td>
                                 <td>250</td>
+                                <td>N/A</td>
                             </tr>
                             <tr>
                                 <th scope="row">3</th>
                                 <td>Big Bob</td>
                                 <td>100</td>
                                 <td>400</td>
+                                <td>N/A</td>
                             </tr>
                             </tbody>
                         </table>
         </div>
-
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="ProjectFrontEnd.js"></script>
     </body>
 </html>

@@ -64,11 +64,35 @@
 
 .table {
     margin-left: 300px;
+    width: 80%;
 }
 
+#statsTable {
+    width: 80%;
+}
 .loginButton {
     margin-left: 300px;
     background-color: darkgrey;
 }
 
+#firstName {
+    width: 640px;
+}
 
+#secondName {
+    width: 640px;
+}
+
+#height {
+    width: 640px;
+}
+
+#weight {
+    width: 640px;
+}
+
+#addNewFighterBtn {
+    position: absolute;
+    right: 914px;
+    top: 800px;
+}
