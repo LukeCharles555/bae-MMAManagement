@@ -13,8 +13,11 @@ public class ManagerService {
 
 	private ManagerRepository managerRepo;
 	
-	public ManagerService(ManagerRepository managerRepo) {
+	private FighterService fighterService;
+	
+	public ManagerService(ManagerRepository managerRepo, FighterService fighterService) {
 		this.managerRepo = managerRepo;
+		this.fighterService = fighterService;
 	}
 	
 	public List<Manager> getAllManagers() {
