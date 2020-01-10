@@ -42,6 +42,42 @@ function getFighter() {
         })
 }
 
+function login() {
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    if (username=='luke' && password=='password') {
+        window.open("FighterApp.html");
+    } else {
+        window.alert("Please enter a valid username and password");
+    }
+}
+
+function addNewFighter() {
+    let fighterFirstName = document.getElementById("firstName");
+    let fighterLastName = document.getElementById("secondName");
+    let fighterHeight = document.getElementById("height");
+    let fighterWeight = document.getElementById("weight");
+
+    let newFighter = {
+        firstName: fighterFirstName.value,
+        lastName: fighterLastName.value,
+        height: fighterHeight.value,
+        weight: fighterWeight.value
+    }
+    JSON.stringify(newFighter);
+    axios.post('http://localhost:8080/fighterapp/fighters', newFighter)
+    .then(response =>
+        console.log(response)
+    )
+    .catch(error =>
+        console.log(error)
+    );
+
+
+}
+
+
 
 
 
