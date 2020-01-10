@@ -1,5 +1,5 @@
 function getFighter() {
-    axios.get('http://localhost:8080/fighterapp/fighters')
+    axios.get('/fighterapp/fighters')
         .then(response => {
         
         response.data.forEach(fighter => {
@@ -65,13 +65,13 @@ function addNewFighter() {
         height: fighterHeight.value,
         weight: fighterWeight.value
     }
-    
+
     if (fighterFirstName.value === "" || fighterLastName.value === "" || fighterHeight.value === "" || fighterWeight.value === "") {
         window.alert("Please make sure all fields are filled");
     } else {
 
         JSON.stringify(newFighter);
-        axios.post('http://localhost:8080/fighterapp/fighters', newFighter)
+        axios.post('/fighterapp/fighters', newFighter)
         .then(response =>
             console.log(response)
         )
@@ -82,7 +82,7 @@ function addNewFighter() {
 }
 
 function showFighterInApp() {
-    axios.get('http://localhost:8080/fighterapp/fighters')
+    axios.get('/fighterapp/fighters')
     .then(response => {
 
         response.data.forEach(fighter => {
