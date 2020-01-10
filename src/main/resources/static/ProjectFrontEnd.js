@@ -65,18 +65,42 @@ function addNewFighter() {
         height: fighterHeight.value,
         weight: fighterWeight.value
     }
-    JSON.stringify(newFighter);
-    axios.post('http://localhost:8080/fighterapp/fighters', newFighter)
-    .then(response =>
-        console.log(response)
-    )
-    .catch(error =>
-        console.log(error)
-    );
+    
+    if (fighterFirstName.value === "" || fighterLastName.value === "" || fighterHeight.value === "" || fighterWeight.value === "") {
+        window.alert("Please make sure all fields are filled");
+    } else {
 
-
+        JSON.stringify(newFighter);
+        axios.post('http://localhost:8080/fighterapp/fighters', newFighter)
+        .then(response =>
+            console.log(response)
+        )
+        .catch(error =>
+            console.log(error)
+        );
+    }
 }
 
+function showFighterInApp() {
+    axios.get('http://localhost:8080/fighterapp/fighters')
+    .then(response => {
+
+        response.data.forEach(fighter => {
+            let list = document.getElementById("fightersList");
+            let li = document.createElement("li");
+
+            li.setAttribute('name', fighter.firstName + " " + fighter.lastName);
+
+            let firstName = fighter.firstName.toString();
+            let lastName = fighter.lastName.toString();
+
+            li.innerText = (firstName.charAt(0).toUpperCase() + firstName.substring(1)) + " " + (lastName.charAt(0).toUpperCase() + lastName.substring(1));
+
+            list.appendChild(li);
+
+        }).catch(err => console.error(err))
+    })
+}
 
 
 
