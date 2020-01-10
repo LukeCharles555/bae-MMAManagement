@@ -1,5 +1,5 @@
 function getFighter() {
-    axios.get('/fighterapp/fighters')
+    axios.get('/mmaManagement/fighterapp/fighters')
         .then(response => {
         
         response.data.forEach(fighter => {
@@ -71,7 +71,7 @@ function addNewFighter() {
     } else {
 
         JSON.stringify(newFighter);
-        axios.post('/fighterapp/fighters', newFighter)
+        axios.post('/mmaManagement/fighterapp/fighters', newFighter)
         .then(response =>
             console.log(response)
         )
@@ -82,7 +82,7 @@ function addNewFighter() {
 }
 
 function showFighterInApp() {
-    axios.get('/fighterapp/fighters')
+    axios.get('/mmaManagement/fighterapp/fighters')
     .then(response => {
 
         response.data.forEach(fighter => {
