@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="ProjectFrontEnd.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            body {
+                background: linear-gradient(to right, aliceblue, white);
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <div class="banner" style="padding:20px; text-align:center; -webkit-text-fill-color:white; background:linear-gradient(to right, black, grey); z-index: 1;">
+                    <div class="banner-content">
+                    <h1>Manager Login Page</h1>
+                    </div>
+            </div>
+
+            <br>
+
+            <div class="sidenav">
+                <br><br><br>
+                <a href='index.html'>Home</a> 
+                <a>Fighter App</a>
+                <a>Fighter Statistics</a>
+            </div>
+
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password">
+            </div>
+            <button type="submitBtn" class="loginButton" onclick="login()">Submit</button>
+          </form>
+          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+          <script src="ProjectFrontEnd.js"></script>
+    </body>
+</html>
