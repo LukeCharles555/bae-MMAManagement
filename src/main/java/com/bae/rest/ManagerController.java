@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.persistance.domain.Fighters;
@@ -49,7 +50,9 @@ public class ManagerController {
 	}
 	
 	@PatchMapping("/update/{managerID}")
-	public Manager addFighterToManager(@PathVariable Long managerID, @RequestBody Fighters newFighter) {
-		return this.managerService.addFighterToManager(managerID, newFighter);
+	public @ResponseBody void addFighterToManager(@PathVariable Long managerID, @RequestBody Fighters fighter) {
+//		return this.managerService.addFighterToManager(managerID, fighter);
+	this.managerService.getManagerByID(managerID);
+	this.addFighterToManager(managerID, fighter);
 	}
 }
