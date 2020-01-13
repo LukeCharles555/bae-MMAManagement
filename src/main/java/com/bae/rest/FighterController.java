@@ -42,7 +42,7 @@ public class FighterController {
 	}
 	
 	@PutMapping("/fighters")
-	public Fighters updateFighter(@PathParam("fighterID") long fighterID, @RequestBody Fighters fighter) {
+	public Fighters updateFighter(@PathParam("fighterID") Long fighterID, @RequestBody Fighters fighter) {
 		return this.fighterService.updateFighter(fighter, fighterID);
 	}
 	

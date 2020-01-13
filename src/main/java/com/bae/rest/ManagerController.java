@@ -37,7 +37,7 @@ public class ManagerController {
 	}
 	
 	@PutMapping("/manager/{managerID}")
-	public Manager updateManager(@PathParam("managerID") long managerID, @RequestBody Manager manager) {
+	public Manager updateManager(@PathParam("managerID") Long managerID, @RequestBody Manager manager) {
 		return managerService.updateManager(manager, managerID);
 	}
 	
