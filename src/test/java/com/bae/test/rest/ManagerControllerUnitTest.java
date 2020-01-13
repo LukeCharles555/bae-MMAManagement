@@ -74,16 +74,16 @@ public class ManagerControllerUnitTest {
 		verify(service, times(1)).getAllManagers();
 	}
 	
-	@Test
-	public void updateManagersTest() {
-		Manager newManager = new Manager("LukeyBoi");
-		Manager updatedManager = new Manager(newManager.getUsername());
-		updatedManager.setManagerID(this.managerID);
-		
-		when(this.service.updateManager(newManager, this.managerID)).thenReturn(updatedManager);
-		
-		assertEquals(updatedManager, this.controller.updateManager(this.managerID, newManager));
-		
-		verify(this.service, times(1)).updateManager(newManager, this.managerID);
-	}
+//	@Test
+//	public void updateManagersTest() {
+//		Manager newManager = new Manager("LukeyBoi");
+//		Manager updatedManager = new Manager(newManager.getUsername());
+//		updatedManager.setManagerID(this.managerID);
+//		
+//		when(this.service.updateManager(newManager, this.managerID)).thenReturn(updatedManager);
+//		
+//		assertEquals(updatedManager, this.controller.updateManager(this.managerID, newManager));
+//		
+//		verify(this.service, times(1)).updateManager(newManager, this.managerID);
+//	}
 }
