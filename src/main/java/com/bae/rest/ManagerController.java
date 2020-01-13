@@ -49,7 +49,7 @@ public class ManagerController {
 	}
 	
 	@PatchMapping("/update/{managerID}")
-	public Manager addFighterToManager(@PathVariable Long managerID, @RequestBody Fighters fighter) {
-		return this.managerService.addFighterToManager(managerID, fighter);
+	public Manager addFighterToManager(@PathVariable Long managerID, @RequestBody Fighters newFighter) {
+		return this.managerService.addFighterToManager(managerID, newFighter);
 	}
 }
