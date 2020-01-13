@@ -42,7 +42,7 @@ public class ManagerService {
 	public Manager addFighterToManager(Long managerID, Fighters fighter) {
 		Manager toUpdate = findManagerByID(managerID);
 		Fighters newFighter = this.fighterService.addNewFighter(fighter);
-		toUpdate.getFighters().add(fighter);
+		toUpdate.getFighters().add(newFighter);
 		return this.managerRepo.saveAndFlush(toUpdate);
 	}
 	
