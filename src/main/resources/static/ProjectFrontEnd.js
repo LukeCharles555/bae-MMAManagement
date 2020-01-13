@@ -106,7 +106,7 @@ function showManagerInApp() {
     axios.get('/mmaManagement/managerapp/manager')
     .then(response => {
 
-        response.data.forEach(fighter => {
+        response.data.forEach(manager => {
             let list = document.getElementById("managerList");
             let li = document.createElement("li");
 
