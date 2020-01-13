@@ -110,10 +110,13 @@ function showManagerInApp() {
             let list = document.getElementById("managerList");
             let li = document.createElement("li");
 
+            li.setAttribute('managerID', manager.managerID);
             li.setAttribute('username', manager.username);
 
+            let managerID = manager.managerID.toString();
             let username = manager.username.toString();
 
+            li.innerText = managerID.charAt(0).toUpperCase() + managerID.substring(1);
             li.innerText = (username.charAt(0).toUpperCase() + username.substring(1));
 
             list.appendChild(li);
