@@ -2,6 +2,8 @@ package com.bae.rest;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,8 +42,8 @@ public class FighterController {
 	}
 	
 	@PutMapping("/fighters")
-	public Fighters updateFighter(@RequestBody Fighters fighter) {
-		return fighterService.updateFighter(fighter);
+	public Fighters updateFighter(@PathParam("fighterID") long fighterID, @RequestBody Fighters fighter) {
+		return this.fighterService.updateFighter(fighter, fighterID);
 	}
 	
 	@DeleteMapping("/fighters/{fighterID}")

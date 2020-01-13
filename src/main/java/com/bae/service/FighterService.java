@@ -25,8 +25,19 @@ public class FighterService {
 		return fighterRepo.save(fighter);
 	}
 	
-	public Fighters updateFighter(Fighters fighter) {
-		return fighterRepo.save(fighter);
+	public Fighters findFighterByID(long fighterID) {
+		return this.fighterRepo.findById(fighterID).orElseThrow(
+				() -> new FighterNotFoundException());
+				
+	}
+	
+	public Fighters updateFighter(Fighters fighter, long fighterID) {
+		Fighters toUpdate = findFighterByID(fighterID);
+		toUpdate.setFirstName(fighter.getFirstName());
+		toUpdate.setLastName(fighter.getLastName());
+		toUpdate.setHeight(fighter.getHeight());
+		toUpdate.setWeight(fighter.getWeight());
+		return this.fighterRepo.save(toUpdate);
 	}
 	
 	public boolean deleteFighter(Long fighterID) {

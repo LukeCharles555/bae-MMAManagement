@@ -37,8 +37,8 @@ public class ManagerController {
 	}
 	
 	@PutMapping("/manager")
-	public Manager updateManager(@RequestBody Manager manager) {
-		return managerService.updateManager(manager);
+	public Manager updateManager(@PathParam("managerID") long managerID, @RequestBody Manager manager) {
+		return managerService.updateManager(manager, managerID);
 	}
 	
 	@DeleteMapping("/manager/{managerID}")

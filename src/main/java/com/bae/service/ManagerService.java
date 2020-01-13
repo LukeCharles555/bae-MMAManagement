@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bae.exceptions.ManagerNotFoundException;
+import com.bae.persistance.domain.Fighters;
 import com.bae.persistance.domain.Manager;
 import com.bae.persistance.repository.ManagerRepository;
 
@@ -28,8 +29,21 @@ public class ManagerService {
 		return managerRepo.save(manager);
 	}
 	
-	public Manager updateManager(Manager manager) {
-		return managerRepo.save(manager);
+	public Manager findManagerByID(long managerID) {
+		return this.managerRepo.findById(managerID).orElseThrow(() -> new ManagerNotFoundException());
+	}
+	
+	public Manager updateManager(Manager manager, long managerID) {
+		Manager toUpdate = findManagerByID(managerID);
+		toUpdate.setUsername(manager.getUsername());
+		return this.managerRepo.save(toUpdate);
+	}
+	
+	public Manager addFighterToManager(long managerID, Fighters fighter) {
+		Manager toUpdate = findManagerByID(managerID);
+		Fighters newFighter = this.fighterService.addNewFighter(fighter);
+		toUpdate.getFighters().add(fighter);
+		return this.managerRepo.saveAndFlush(toUpdate);
 	}
 	
 	public String deleteManager(Long managerID) {
