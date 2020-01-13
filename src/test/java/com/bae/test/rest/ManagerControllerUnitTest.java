@@ -80,10 +80,10 @@ public class ManagerControllerUnitTest {
 		Manager updatedManager = new Manager(newManager.getUsername());
 		updatedManager.setManagerID(this.managerID);
 		
-		when(this.service.updateManager(newManager)).thenReturn(updatedManager);
+		when(this.service.updateManager(newManager, this.managerID)).thenReturn(updatedManager);
 		
-		assertEquals(updatedManager, this.controller.updateManager(newManager));
+		assertEquals(updatedManager, this.controller.updateManager(this.managerID, newManager));
 		
-		verify(this.service, times(1)).updateManager(newManager);
+		verify(this.service, times(1)).updateManager(newManager, this.managerID);
 	}
 }

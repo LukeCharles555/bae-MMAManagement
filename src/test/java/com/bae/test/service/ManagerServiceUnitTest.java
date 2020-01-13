@@ -84,9 +84,9 @@ public class ManagerServiceUnitTest {
 		when(this.repo.findById(this.managerID)).thenReturn(Optional.of(this.testManagerWithID));
 		when(this.repo.save(updatedManager)).thenReturn(newManager);
 		
-		assertEquals(updatedManager, this.service.updateManager(newManager));
+		assertEquals(updatedManager, this.service.updateManager(newManager, this.managerID));
 		
-//		verify(this.repo,times(1)).findById(1L);
+		verify(this.repo,times(1)).findById(1L);
 		verify(this.repo, times(1)).save(updatedManager);
 	}
 }

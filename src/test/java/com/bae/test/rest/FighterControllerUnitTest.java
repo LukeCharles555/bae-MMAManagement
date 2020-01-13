@@ -35,7 +35,7 @@ public class FighterControllerUnitTest {
 	
 	private Fighters testFighterWithID;
 	
-	final long fighterID = 1L;
+	public final long fighterID = 1L;
 	
 	@Before
 	public void init() {
@@ -78,10 +78,10 @@ public class FighterControllerUnitTest {
 		Fighters updatedFighter = new Fighters(newFighter.getFirstName(), newFighter.getLastName(), newFighter.getHeight(), newFighter.getWeight());
 		updatedFighter.setFighterID(this.fighterID);
 		
-		when(this.service.updateFighter(newFighter)).thenReturn(updatedFighter);
+		when(this.service.updateFighter(newFighter, this.fighterID)).thenReturn(updatedFighter);
 		
-		assertEquals(updatedFighter, this.controller.updateFighter(newFighter));
+		assertEquals(updatedFighter, this.controller.updateFighter(this.fighterID, newFighter));
 		
-		verify(this.service, times(1)).updateFighter(newFighter);
+		verify(this.service, times(1)).updateFighter(newFighter, this.fighterID);
 	}
 }
