@@ -102,6 +102,26 @@ function showFighterInApp() {
     })
 }
 
+function showManagerInApp() {
+    axios.get('/mmaManagement/managerapp/manager')
+    .then(response => {
+
+        response.data.forEach(fighter => {
+            let list = document.getElementById("managerList");
+            let li = document.createElement("li");
+
+            li.setAttribute('username', manager.username);
+
+            let username = manager.username.toString();
+
+            li.innerText = (username.charAt(0).toUpperCase() + username.substring(1));
+
+            list.appendChild(li);
+
+        }).catch(err => console.error(err))
+    })
+}
+
 
 
 

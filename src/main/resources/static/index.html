@@ -36,7 +36,20 @@
             </div>
             <button type="submitBtn" class="loginButton" onclick="login()">Submit</button>
           </form>
+
+          <div class="card" style="width: 40rem;">
+            <div class="card-header">
+                <b>List of managers:</b>
+            </div>
+            <ul class="list-group list-group-flush" id="managerList">
+            <div id="li">
+
+            </div>
+            </ul>
+          </div>
+
           <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
           <script src="ProjectFrontEnd.js"></script>
+          <script>showManagerInApp()</script>
     </body>
 </html>
