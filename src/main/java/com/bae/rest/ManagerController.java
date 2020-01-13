@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.persistance.domain.Fighters;
@@ -38,21 +37,19 @@ public class ManagerController {
 	public Manager addNewManager(@RequestBody Manager manager) {
 		return managerService.addNewManager(manager);
 	}
-	
-	@PutMapping("/manager/{managerID}")
-	public Manager updateManager(@PathParam("managerID") Long managerID, @RequestBody Manager manager) {
-		return this.managerService.updateManager(manager, managerID);
-	}
+//	
+//	@PutMapping("/manager/{managerID}")
+//	public Manager updateManager(@PathParam("managerID") Long managerID, @RequestBody Manager manager) {
+//		return this.managerService.updateManager(manager, managerID);
+//	}
 	
 	@DeleteMapping("/manager/{managerID}")
 	public String deleteManager(@PathVariable(value = "managerID") Long managerID) {
 		return managerService.deleteManager(managerID);
 	}
 	
-	@PatchMapping("/update/{managerID}")
-	public @ResponseBody Manager addFighterToManager(@PathVariable Long managerID, @RequestBody Fighters fighter) {
-//		return this.managerService.addFighterToManager(managerID, fighter);
-	this.managerService.getManagerByID(managerID);
-	return this.addFighterToManager(managerID, fighter);
+	@PutMapping("/update/{managerID}")
+	public Manager addFighterToManager(@PathVariable Long managerID, @RequestBody Fighters fighter) {
+		return this.managerService.addFighterToManager(managerID, fighter);
 	}
 }
