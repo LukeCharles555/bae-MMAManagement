@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.websocket.server.PathParam;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -24,7 +25,9 @@ public class ManagerController {
 
 	private ManagerService managerService;
 	
+	@Autowired
 	public ManagerController(ManagerService managerService) {
+		super();
 		this.managerService = managerService;
 	}
 	
@@ -34,21 +37,21 @@ public class ManagerController {
 	}
 	
 	@PostMapping("/manager")
-	public Manager addNewManager(@RequestBody Manager manager) {
-		return managerService.addNewManager(manager);
+	public Manager addNewManager(@RequestBody Manager fighter) {
+		return this.managerService.addNewManager(fighter);
 	}
-//	
-//	@PutMapping("/manager/{managerID}")
-//	public Manager updateManager(@PathParam("managerID") Long managerID, @RequestBody Manager manager) {
-//		return this.managerService.updateManager(manager, managerID);
-//	}
+	
+	@PutMapping("/manager/{managerID}")
+	public Manager updateManager(@PathParam("managerID") Long managerID, @RequestBody Manager manager) {
+		return this.managerService.updateManager(manager, managerID);
+	}
 	
 	@DeleteMapping("/manager/{managerID}")
 	public String deleteManager(@PathVariable(value = "managerID") Long managerID) {
 		return managerService.deleteManager(managerID);
 	}
 	
-	@PutMapping("/update/{managerID}")
+	@PatchMapping("/update/{managerID}")
 	public Manager addFighterToManager(@PathVariable Long managerID, @RequestBody Fighters fighter) {
 		return this.managerService.addFighterToManager(managerID, fighter);
 	}
