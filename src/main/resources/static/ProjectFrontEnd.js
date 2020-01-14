@@ -53,6 +53,7 @@ function login() {
 
             if (typedUsername.value===manager.username.toString() && typedPassword.value===manager.password.toString()) {
                 window.location.replace("FighterApp.html");
+                console.log(sessionStorage.setItem('managerID',manager.managerID));
             } else {
                 window.alert("Please enter a valid username and password");
             }
@@ -73,20 +74,12 @@ function addNewFighter() {
         weight: fighterWeight.value
     }
 
-    let managerID = axios.get('/managerapp/manager')
-    .then(response => {
-        response.data.forEach(manager => {
-            let typedUsername = document.getElementById("username");
-            let typedPassword = document.getElementById("password");
-            let 
-        })
-    })
     if (fighterFirstName.value === "" || fighterLastName.value === "" || fighterHeight.value === "" || fighterWeight.value === "") {
         window.alert("Please make sure all fields are filled");
     } else {
 
         JSON.stringify(newFighter);
-        axios.patch('/managerapp/update/managerID', newFighter)
+        axios.patch('/managerapp/update/' + sessionStorage.getItem('managerID'), newFighter)
         .then(response =>
             console.log(response)
         )
