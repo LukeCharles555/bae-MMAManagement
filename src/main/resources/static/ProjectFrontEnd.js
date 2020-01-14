@@ -1,5 +1,5 @@
 function getFighter() {
-    axios.get('/mmaManagement/fighterapp/fighters')
+    axios.get('/fighterapp/fighters')
         .then(response => {
         
         response.data.forEach(fighter => {
@@ -43,14 +43,21 @@ function getFighter() {
 }
 
 function login() {
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
+    axios.get('/managerapp/manager')
+    .then(response => {
 
-    if (username=='luke' && password=='password') {
-        window.open("FighterApp.html");
-    } else {
-        window.alert("Please enter a valid username and password");
-    }
+        response.data.forEach(manager => {
+
+            let typedUsername = document.getElementById("username");
+            let typedPassword = document.getElementById("password");
+
+            if (typedUsername.value===manager.username.toString() && typedPassword.value===manager.password.toString()) {
+                window.location.replace("FighterApp.html");
+            } else {
+                window.alert("Please enter a valid username and password");
+            }
+        }).catch(err => console.error(err))
+    })
 }
 
 function addNewFighter() {
@@ -66,12 +73,20 @@ function addNewFighter() {
         weight: fighterWeight.value
     }
 
+    let managerID = axios.get('/managerapp/manager')
+    .then(response => {
+        response.data.forEach(manager => {
+            let typedUsername = document.getElementById("username");
+            let typedPassword = document.getElementById("password");
+            let 
+        })
+    })
     if (fighterFirstName.value === "" || fighterLastName.value === "" || fighterHeight.value === "" || fighterWeight.value === "") {
         window.alert("Please make sure all fields are filled");
     } else {
 
         JSON.stringify(newFighter);
-        axios.post('/mmaManagement/fighterapp/fighters', newFighter)
+        axios.patch('/managerapp/update/managerID', newFighter)
         .then(response =>
             console.log(response)
         )
@@ -82,7 +97,7 @@ function addNewFighter() {
 }
 
 function showFighterInApp() {
-    axios.get('/mmaManagement/fighterapp/fighters')
+    axios.get('/fighterapp/fighters')
     .then(response => {
 
         response.data.forEach(fighter => {
@@ -102,28 +117,27 @@ function showFighterInApp() {
     })
 }
 
-function showManagerInApp() {
-    axios.get('/mmaManagement/managerapp/manager')
-    .then(response => {
+// function showManagerInApp() {
+//     axios.get('/mmaManagement/managerapp/manager')
+//     .then(response => {
 
-        response.data.forEach(manager => {
-            let list = document.getElementById("managerList");
-            let li = document.createElement("li");
+//         response.data.forEach(manager => {
+//             let list = document.getElementById("managerList");
+//             let li = document.createElement("li");
 
-            li.setAttribute('managerID', manager.managerID);
-            li.setAttribute('username', manager.username);
+//             li.setAttribute('username', manager.username);
 
-            let managerID = manager.managerID.toString();
-            let username = manager.username.toString();
+//             let username = manager.username.toString();
 
-            li.innerText = managerID.charAt(0).toUpperCase() + managerID.substring(1);
-            li.innerText = (username.charAt(0).toUpperCase() + username.substring(1));
+//             li.innerText = (username.charAt(0).toUpperCase() + username.substring(1));
 
-            list.appendChild(li);
+//             list.appendChild(li);
 
-        }).catch(err => console.error(err))
-    })
-}
+//         }).catch(err => console.error(err))
+//     })
+// }
+
+
 
 
 
