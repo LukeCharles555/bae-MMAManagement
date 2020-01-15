@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.persistance.domain.Fighters;
-
+import com.bae.persistance.domain.Manager;
 import com.bae.service.FighterService;
 
 
@@ -34,6 +34,11 @@ public class FighterController {
 	@GetMapping("/fighters")
 	public List<Fighters> getAllFighters() {
 		return fighterService.getAllFighters();
+	}
+	
+	@GetMapping("/fighters/{fighterID}")
+	public Fighters getFighterByID(@PathVariable(value="fighterID") Long fighterID) {
+		return fighterService.findFighterByID(fighterID);
 	}
 	
 	@PostMapping("/fighters")

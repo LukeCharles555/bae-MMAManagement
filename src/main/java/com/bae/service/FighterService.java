@@ -25,7 +25,7 @@ public class FighterService {
 		return fighterRepo.save(fighter);
 	}
 	
-	public Fighters findFighterByID(long fighterID) {
+	public Fighters findFighterByID(Long fighterID) {
 		return this.fighterRepo.findById(fighterID).orElseThrow(
 				() -> new FighterNotFoundException());
 				

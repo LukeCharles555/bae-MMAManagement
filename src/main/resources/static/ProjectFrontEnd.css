@@ -96,3 +96,8 @@
     right: 914px;
     top: 800px;
 }
+
+.signOut {
+    position: absolute;
+    right: 50;
+}

@@ -36,6 +36,11 @@ public class ManagerController {
 		return managerService.getAllManagers();
 	}
 	
+	@GetMapping("/manager/{managerID}")
+	public Manager getManagerByID(@PathVariable(value="managerID") Long managerID) {
+		return managerService.findManagerByID(managerID);
+	}
+	
 	@PostMapping("/manager")
 	public Manager addNewManager(@RequestBody Manager fighter) {
 		return this.managerService.addNewManager(fighter);
