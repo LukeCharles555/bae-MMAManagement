@@ -1,5 +1,5 @@
 function readAll() {
-    axios.get('/fighterapp/fighters')
+    axios.get('mmaManagement/fighterapp/fighters')
     .then(response => {console.log(response.data); makeTable(response.data);});
 }
 
@@ -55,7 +55,7 @@ function makeTable(data) {
 }
 
 function login() {
-    axios.get('/managerapp/manager')
+    axios.get('mmaManagement/managerapp/manager')
     .then(response => {
 
         response.data.forEach(manager => {
@@ -91,7 +91,7 @@ function addNewFighter() {
     } else {
 
         JSON.stringify(newFighter);
-        axios.patch('/managerapp/update/' + sessionStorage.getItem('managerID'), newFighter)
+        axios.patch('mmaManagement/managerapp/update/' + sessionStorage.getItem('managerID'), newFighter)
         .then(response =>
             console.log(response)
         )
@@ -106,7 +106,7 @@ function capitaliseWord(word) {
 }
 
 function showFighterInApp() {
-    axios.get('/managerapp/manager/' + sessionStorage.getItem('managerID'))
+    axios.get('mmaManagement/managerapp/manager/' + sessionStorage.getItem('managerID'))
     .then(response => {
 
         response.data.fighters.forEach(fighter => {
@@ -129,7 +129,7 @@ function signOut() {
 }
 
 function showManagerInApp() {
-    axios.get('/managerapp/manager')
+    axios.get('mmaManagement/managerapp/manager')
     .then(response => {
 
         response.data.forEach(manager => {
@@ -179,7 +179,7 @@ function deleteFighterValue(data) {
     let confirmMessage = window.confirm("Are you sure you want to delete this fighter?");
 
     if (confirmMessage) {
-        axios.delete('/fighterapp/fighters/' + fighterID)
+        axios.delete('mmaManagement/fighterapp/fighters/' + fighterID)
         .then(response => { console.log(response); })
         window.location = window.location;
     } else {}
@@ -202,7 +202,7 @@ function popFunction(data) {
     }
     
     if(inputWeight) {
-        axios.patch('/fighterapp/update/' + fighterID, inputWeight)
+        axios.patch('mmaManagement/fighterapp/update/' + fighterID, inputWeight)
         .then(response =>
             console.log(response)
         )
