@@ -13,6 +13,8 @@ public class FighterService {
 
 	private FighterRepository fighterRepo;
 	
+	private FighterService fighterService;
+	
 	public FighterService(FighterRepository fighterRepo) {
 		this.fighterRepo = fighterRepo;
 	}
@@ -31,11 +33,17 @@ public class FighterService {
 				
 	}
 	
-	public Fighters updateFighter(Fighters fighter, long fighterID) {
+	public Fighters updateFighter(Fighters fighter, Long fighterID) {
 		Fighters toUpdate = findFighterByID(fighterID);
 		toUpdate.setFirstName(fighter.getFirstName());
 		toUpdate.setLastName(fighter.getLastName());
 		toUpdate.setHeight(fighter.getHeight());
+		toUpdate.setWeight(fighter.getWeight());
+		return this.fighterRepo.save(toUpdate);
+	}
+	
+	public Fighters changeWeightOfFighter(Long fighterID, Fighters fighter) {
+		Fighters toUpdate = findFighterByID(fighterID);
 		toUpdate.setWeight(fighter.getWeight());
 		return this.fighterRepo.save(toUpdate);
 	}

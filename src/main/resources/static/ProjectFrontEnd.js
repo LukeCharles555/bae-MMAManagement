@@ -168,9 +168,15 @@ function deleteFighter(data) {
 
 function deleteFighterValue(data) {
     let fighterID = data;
-    axios.delete('/fighterapp/fighters/' + fighterID)
-      .then(response => { console.log(response); })
-  }
+    let confirmMessage = window.confirm("Are you sure you want to delete this fighter?");
+
+    if (confirmMessage) {
+        axios.delete('/fighterapp/fighters/' + fighterID)
+        .then(response => { console.log(response); })
+        window.location = window.location;
+    } else {}
+    
+}
      
 
 

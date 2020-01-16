@@ -7,6 +7,7 @@ import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -46,7 +47,7 @@ public class FighterController {
 		return fighterService.addNewFighter(fighter);
 	}
 	
-	@PutMapping("/fighters")
+	@PutMapping("/fighters/{fighterID}")
 	public Fighters updateFighter(@PathParam("fighterID") Long fighterID, @RequestBody Fighters fighter) {
 		return this.fighterService.updateFighter(fighter, fighterID);
 	}
@@ -54,5 +55,10 @@ public class FighterController {
 	@DeleteMapping("/fighters/{fighterID}")
 	public void deleteFighter(@PathVariable Long fighterID) {
 		this.fighterService.deleteFighter(fighterID);
+	}
+	
+	@PatchMapping("/update/{fighterID}")
+	public Fighters changeWeightOfFighter(@PathVariable Long fighterID, @RequestBody Fighters fighter) {
+		return this.fighterService.changeWeightOfFighter(fighterID, fighter);
 	}
 }
