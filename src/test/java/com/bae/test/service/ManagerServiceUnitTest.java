@@ -37,6 +37,8 @@ public class ManagerServiceUnitTest {
 	
 	private Manager testManagerWithID;
 	
+	
+	
 	final long managerID = 1L;
 	
 	@Before
