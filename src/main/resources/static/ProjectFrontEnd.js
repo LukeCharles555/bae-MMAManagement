@@ -32,12 +32,20 @@ function makeTable(data) {
                 tr.appendChild(weightTd);
 
                 const deleteBtn = document.createElement('button');
+                const editBtn = document.createElement('button');
                 deleteBtn.className = 'btn btn-danger';
+                editBtn.className = 'btn btn-edit';
+                editBtn.id = 'editBtn';
                 deleteBtn.type="button";
+                editBtn.type='button';
                 deleteBtn.addEventListener('click', () => deleteFighterValue(fighters[x].fighterID));
+                editBtn.addEventListener('click', () => popFunction(fighters[x].fighterID));
                 deleteBtn.innerHTML='Delete Fighter';
+                editBtn.innerHTML = 'Edit Fighter';
                 deleteTd.appendChild(deleteBtn);
+                deleteTd.appendChild(editBtn);
                 tr.appendChild(deleteTd);
+                tr.appendChild(editBtn);
 
                 table.appendChild(tr);
 
@@ -177,6 +185,34 @@ function deleteFighterValue(data) {
     } else {}
     
 }
+
+function editFighterValue() {
+    let editButton = document.getElementById("editBtn");
+    editButton.onclick='popFunction()';
+
+}
+
+function popFunction(data) {
+
+    let fighterID = data;
+    let inputWeight=prompt('Enter new weight here');
+    inputWeight = parseInt(inputWeight);
+    inputWeight = {
+        weight: inputWeight
+    }
+    
+    if(inputWeight) {
+        axios.patch('/fighterapp/update/' + fighterID, inputWeight)
+        .then(response =>
+            console.log(response)
+        )
+        .catch(error =>
+            console.log(error)
+        );
+    }
+}
+
+
      
 
 
