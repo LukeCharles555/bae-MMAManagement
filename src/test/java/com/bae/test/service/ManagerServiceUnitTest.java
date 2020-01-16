@@ -64,7 +64,7 @@ public class ManagerServiceUnitTest {
 		this.service.deleteManager(managerID);
 		
 		verify(this.repo, times(1)).deleteById(managerID);
-//		verify(this.repo, times(2)).existsById(managerID);
+		verify(this.repo, times(1)).existsById(managerID);
 	}
 	
 	@Test
@@ -88,5 +88,10 @@ public class ManagerServiceUnitTest {
 		
 		verify(this.repo,times(1)).findById(1L);
 		verify(this.repo, times(1)).save(updatedManager);
+	}
+	
+	@Test
+	public void addFighterToManagerTest() {
+		
 	}
 }

@@ -64,6 +64,15 @@ public class FighterControllerUnitTest {
 	}
 	
 	@Test
+	public void findFighterByIDTest() {
+		when(this.service.findFighterByID(this.fighterID)).thenReturn(this.testFighterWithID);
+		
+		assertEquals(this.testFighterWithID, this.controller.getFighterByID(this.fighterID));
+		
+		verify(this.service, times(1)).findFighterByID(this.fighterID);
+	}
+	
+	@Test
 	public void getAllFightersTest() {
 		when(service.getAllFighters()).thenReturn(this.fighterList);
 		

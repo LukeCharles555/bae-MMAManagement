@@ -66,6 +66,15 @@ public class ManagerControllerUnitTest {
 	}
 	
 	@Test
+	public void findManagerByIDTest() {
+		when(this.service.findManagerByID(this.managerID)).thenReturn(this.testManagerWithID);
+		
+		assertEquals(this.testManagerWithID, this.controller.getManagerByID(this.managerID));
+		
+		verify(this.service, times(1)).findManagerByID(this.managerID);
+	}
+	
+	@Test
 	public void getAllManagersTest() {
 		when(service.getAllManagers()).thenReturn(this.managerList);
 		
@@ -74,16 +83,16 @@ public class ManagerControllerUnitTest {
 		verify(service, times(1)).getAllManagers();
 	}
 	
-//	@Test
-//	public void updateManagersTest() {
-//		Manager newManager = new Manager("LukeyBoi");
-//		Manager updatedManager = new Manager(newManager.getUsername());
-//		updatedManager.setManagerID(this.managerID);
-//		
-//		when(this.service.updateManager(newManager, this.managerID)).thenReturn(updatedManager);
-//		
-//		assertEquals(updatedManager, this.controller.updateManager(this.managerID, newManager));
-//		
-//		verify(this.service, times(1)).updateManager(newManager, this.managerID);
-//	}
+	@Test
+	public void updateManagersTest() {
+		Manager newManager = new Manager("LukeyBoi");
+		Manager updatedManager = new Manager(newManager.getUsername());
+		updatedManager.setManagerID(this.managerID);
+		
+		when(this.service.updateManager(newManager, this.managerID)).thenReturn(updatedManager);
+		
+		assertEquals(updatedManager, this.controller.updateManager(this.managerID, newManager));
+		
+		verify(this.service, times(1)).updateManager(newManager, this.managerID);
+	}
 }
