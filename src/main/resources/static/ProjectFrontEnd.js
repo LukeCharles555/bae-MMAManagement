@@ -1,52 +1,49 @@
-function getFighter() {
+function readAll() {
     axios.get('/fighterapp/fighters')
-        .then(response => {
-        
-        response.data.forEach(fighter => {
+    .then(response => {console.log(response.data); makeTable(response.data);});
+}
+
+function makeTable(data) {
+            let fighters = data;
             let table =
             document.getElementById("tableBody");
-            let tr = 
-            document.createElement('tr');
-            let nameTd = 
-            document.createElement('td');
-            let heightTd =
-            document.createElement('td');
-            let weightTd = 
-            document.createElement('td');
-            let deleteTd = document.createElement('td');
 
-            tr.setAttribute('name', fighter.firstName + " " + fighter.lastName);
+            for (let x=0; x < fighters.length; x++) {
+                let tr = 
+                document.createElement('tr');
+                let nameTd = 
+                document.createElement('td');
+                let heightTd =
+                document.createElement('td');
+                let weightTd = 
+                document.createElement('td');
+                let deleteTd = document.createElement('td');
 
-            tr.setAttribute('height', fighter.height);
+                const fighterName=document.createTextNode(fighters[x].firstName + " " + fighters[x].lastName);
+                nameTd.appendChild(fighterName);
+                tr.appendChild(nameTd);
 
-            tr.setAttribute('weight', fighter.weight);
+                const fighterHeight=document.createTextNode(fighters[x].height);
+                heightTd.appendChild(fighterHeight);
+                tr.appendChild(heightTd);
 
-            tr.setAttribute('fighterID', parseInt(fighter.fighterID));
+                const fighterWeight=document.createTextNode(fighters[x].weight);
+                weightTd.appendChild(fighterWeight);
+                tr.appendChild(weightTd);
 
-            tr.addEventListener('click', () =>
-            window.location = 
-            "FighterStats.html");
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn btn-danger';
+                deleteBtn.type="button";
+                deleteBtn.addEventListener('click', () => deleteFighterValue(fighters[x].fighterID));
+                deleteBtn.innerHTML='Delete Fighter';
+                deleteTd.appendChild(deleteBtn);
+                tr.appendChild(deleteTd);
 
-            let firstName = fighter.firstName.toString();
-            let lastName = fighter.lastName.toString();
-            let height = fighter.height.toString();
-            let weight = fighter.weight.toString();
-            let fighterId = parseInt(fighter.fighterID);
-            sessionStorage.setItem('fighterID', fighterId);
+                table.appendChild(tr);
 
-            nameTd.innerText = (firstName.charAt(0).toUpperCase() + firstName.substring(1)) + " " + (lastName.charAt(0).toUpperCase() + lastName.substring(1));
-            heightTd.innerText = height.charAt(0).toUpperCase() + height.substring(1);
-            weightTd.innerText = weight.charAt(0).toUpperCase() + weight.substring(1);
-            deleteTd.innerHTML = '<button id="deleteBtn" onclick="deleteFighter()">Delete</button>';
-
-            table.appendChild(tr);
-            tr.appendChild(nameTd);
-            tr.appendChild(heightTd);
-            tr.appendChild(weightTd);
-            tr.appendChild(deleteTd);
-
-        })
-        })
+            }
+        
+        
 }
 
 function login() {
@@ -144,32 +141,36 @@ function showManagerInApp() {
     })
 }
 
-// function buttonEventListener() {
-//     let deleteAnswer = window.confirm("Are you sure you want to delete this fighter?");
-//     if (deleteAnswer) {
-//         sessionStorage.setItem('fighterID', fighters.fighterID)
-//         deleteFighter()
-//     }
+function deleteFighter(data) {
+    let fighterID = data;
+    let deleteFighterFormDiv = document.getElementById("myDeleteFighterForm");
 
-//     document.getElementById("deleteBtn").addEventListener("click", deleteAnswer);
-// }
+    const deleteFighterForm = document.createElement("form");
+    deleteFighterForm.addEventListener('submit', () => deleteFighterValue(fighterID));
 
-// function clickDelete() {
-//     window.sessionStorage.setItem('fighterID', fighterId);
-//     deleteFighter();
-// }
+    const youSureCheck = document.createElement("h2");
+    youSureCheck.innerHTML = "Are you sure you want to delete this fighter?";
+    deleteFighterForm.appendChild(youSureCheck);
 
-function deleteFighter() {
+    const deleteFighterNow = document.createElement("button");
+    deleteFighterNow.className = "btn btn-danger";
+    deleteFighterNow.type = "submit";
+    deleteFighterNow.innerHTML = "DELETE";
+    deleteFighterForm.appendChild(deleteFighterNow);
 
-    let deleteAnswer = window.confirm("Are you sure you want to delete this fighter?");
-    if (deleteAnswer) {
-        axios.delete('/fighterapp/fighters/' + sessionStorage.getItem('fighterID'))
-        .then(response => {
-            console.log(response)
-        })    
-    }
+    const closeDeleteFighterWindow = document.createElement("button");
+    closeDeleteFighterWindow.className = "btn btn-danger";
+    closeDeleteFighterWindow.type = "button";
+    closeDeleteFighterWindow.innerHTML = "Close";
+    closeDeleteFighterWindow.addEventListener("click", () => deleteFighterFormDiv.removeChild(deleteFighterForm));
    
 }
+
+function deleteFighterValue(data) {
+    let fighterID = data;
+    axios.delete('/fighterapp/fighters/' + fighterID)
+      .then(response => { console.log(response); })
+  }
      
 
 
