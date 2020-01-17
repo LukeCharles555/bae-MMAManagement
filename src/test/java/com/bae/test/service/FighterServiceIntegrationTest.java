@@ -45,13 +45,13 @@ public class FighterServiceIntegrationTest {
 
 	@Test
 	public void testDeleteFighter() {
-		 assertThat(this.service.deleteFighter(this.testFighterWithID.getFighterID())).isEqualTo("");
+		 assertThat(this.service.deleteFighter(this.testFighterWithID.getFighterID())).isEqualTo(false);
 	}
 
-//	@Test
-//	public void testFindDuckByID() {
-//		assertThat(this.service.findDuckByID(this.testFighterWithID.getId())).isEqualTo(this.testDuckWithID);
-//	}
+	@Test
+	public void testFindFighterByID() {
+		assertThat(this.service.findFighterByID(this.testFighterWithID.getFighterID())).isEqualTo(this.testFighterWithID);
+	}
 
 	@Test
 	public void testGetAllFighters() {
