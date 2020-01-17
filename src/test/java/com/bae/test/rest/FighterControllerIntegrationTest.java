@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.bae.persistance.domain.Fighters;
 import com.bae.persistance.repository.FighterRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
@@ -83,6 +85,20 @@ public class FighterControllerIntegrationTest {
 //		
 //		String result = this.mock
 //				.perform(request(HttpMethod.PUT, "/fighterapp/fighters/?fighterID=" + this.fighterID).accept(MediaType.APPLICATION_JSON)
+//						.contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newFighter)))
+//				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+//		
+//		assertEquals(this.mapper.writeValueAsString(updatedFighter), result);
+//	}
+	
+//	@Test
+//	public void testChangeWeightOfFighter() throws Exception {
+//		Fighters newFighter = new Fighters("Mr", "T", 75, 200);
+//		Fighters updatedFighter = new Fighters(newFighter.getFirstName(), newFighter.getLastName(), newFighter.getHeight(), newFighter.getWeight());
+//		updatedFighter.setFighterID(this.fighterID);
+//		
+//		String result = this.mock
+//				.perform(request(HttpMethod.PATCH, "/fighterapp/update/?fighterID=" + this.fighterID).accept(MediaType.APPLICATION_JSON)
 //						.contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newFighter)))
 //				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 //		
