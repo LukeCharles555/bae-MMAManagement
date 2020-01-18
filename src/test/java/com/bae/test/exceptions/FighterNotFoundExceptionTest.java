@@ -43,7 +43,7 @@ public class FighterNotFoundExceptionTest {
 	public void testFighterNotFoundException() {
 		
 		this.service.findFighterByID(3L);
-		
+	
 	}
 	
 	
