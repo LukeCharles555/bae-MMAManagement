@@ -67,4 +67,15 @@ public class FighterServiceIntegrationTest {
 
 		assertThat(this.service.updateFighter(newFighter, newFighter.getFighterID())).isEqualTo(updatedFighter);
 	}
+	
+	@Test
+	public void changeWeightOfFighterTest() {
+		Fighters newFighter = new Fighters("Mr", "T", 70, 250);
+		newFighter.setFighterID(this.testFighterWithID.getFighterID());
+		Fighters updatedFighter = new Fighters(newFighter.getFirstName(), newFighter.getLastName(), newFighter.getHeight(), newFighter.getWeight());
+		updatedFighter.setFighterID(this.testFighterWithID.getFighterID());
+		updatedFighter.setWeight(300);
+		
+		assertThat(this.service.changeWeightOfFighter(newFighter.getFighterID(), newFighter)).isNotEqualTo(updatedFighter);
+	}
 }

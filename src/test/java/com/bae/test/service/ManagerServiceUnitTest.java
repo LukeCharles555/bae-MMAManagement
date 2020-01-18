@@ -1,5 +1,6 @@
 package com.bae.test.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -18,15 +19,20 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.bae.persistance.domain.Fighters;
 import com.bae.persistance.domain.Manager;
 import com.bae.persistance.repository.ManagerRepository;
 import com.bae.service.ManagerService;
+import com.bae.service.FighterService;
 
 @RunWith(SpringRunner.class)
 public class ManagerServiceUnitTest {
 
 	@InjectMocks
 	private ManagerService service;
+	
+	@InjectMocks
+	private FighterService fighterService;
 	
 	@Mock
 	private ManagerRepository repo;
@@ -36,8 +42,6 @@ public class ManagerServiceUnitTest {
 	private Manager testManager;
 	
 	private Manager testManagerWithID;
-	
-	
 	
 	final long managerID = 1L;
 	
@@ -93,7 +97,21 @@ public class ManagerServiceUnitTest {
 	}
 	
 	@Test
-	public void addFighterToManagerTest() {
-		
+	public void testGetManagerByID() {
+		assertThat(this.service.getManagerByID(this.testManagerWithID.getManagerID()));
 	}
+	
+//	@Test
+//	public void addFighterToManagerTest() {
+//		Manager newManager = this.testManagerWithID;
+//		Manager updatedManager = new Manager(newManager.getUsername());
+//		Fighters newFighter = new Fighters("Mr", "T", 70, 200);
+//		updatedManager.setManagerID(managerID);
+//		when(this.repo.findById(this.managerID)).thenReturn(Optional.of(this.testManagerWithID));
+//		when(this.repo.save(updatedManager)).thenReturn(newManager);
+//		
+//		assertThat(this.service.addFighterToManager(newManager.getManagerID(), newFighter)).isNotEqualTo(updatedManager);
+//		
+//		verify(this.repo, times(1)).findById(1L);
+//	}
 }

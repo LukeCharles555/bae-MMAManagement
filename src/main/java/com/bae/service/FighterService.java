@@ -49,9 +49,9 @@ public class FighterService {
 	}
 	
 	public boolean deleteFighter(Long fighterID) {
-//		if (!this.fighterRepo.existsById(fighterID)) {
-//			throw new FighterNotFoundException();
-//		}
+		if (!this.fighterRepo.existsById(fighterID)) {
+			throw new FighterNotFoundException();
+		}
 		
 		this.fighterRepo.deleteById(fighterID);
 		return this.fighterRepo.existsById(fighterID);
