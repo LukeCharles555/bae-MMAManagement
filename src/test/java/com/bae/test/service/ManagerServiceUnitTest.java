@@ -3,7 +3,9 @@ package com.bae.test.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -100,7 +102,7 @@ public class ManagerServiceUnitTest {
 	
 	@Test
 	public void testGetManagerByID() {
-		assertThat(this.service.getManagerByID(this.testManagerWithID.getManagerID()));
+		assertEquals(this.service.getManagerByID(this.testManagerWithID.getManagerID()), null);
 	}
 
 }
