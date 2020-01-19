@@ -47,6 +47,8 @@ public class ManagerServiceUnitTest {
 	
 	@Before
 	public void init() {
+		this.repo.deleteAll();
+		
 		this.managerList = new ArrayList<>();
 		this.managerList.add(testManager);
 		this.testManager = new Manager("Luke");
@@ -100,18 +102,5 @@ public class ManagerServiceUnitTest {
 	public void testGetManagerByID() {
 		assertThat(this.service.getManagerByID(this.testManagerWithID.getManagerID()));
 	}
-	
-//	@Test
-//	public void addFighterToManagerTest() {
-//		Manager newManager = this.testManagerWithID;
-//		Manager updatedManager = new Manager(newManager.getUsername());
-//		Fighters newFighter = new Fighters("Mr", "T", 70, 200);
-//		updatedManager.setManagerID(managerID);
-//		when(this.repo.findById(this.managerID)).thenReturn(Optional.of(this.testManagerWithID));
-//		when(this.repo.save(updatedManager)).thenReturn(newManager);
-//		
-//		assertThat(this.service.addFighterToManager(newManager.getManagerID(), newFighter)).isNotEqualTo(updatedManager);
-//		
-//		verify(this.repo, times(1)).findById(1L);
-//	}
+
 }

@@ -18,6 +18,7 @@ function makeTable(data) {
                 let weightTd = 
                 document.createElement('td');
                 let deleteTd = document.createElement('td');
+                let editTd = document.createElement('td');
 
                 const fighterName=document.createTextNode(fighters[x].firstName + " " + fighters[x].lastName);
                 nameTd.appendChild(fighterName);
@@ -43,7 +44,7 @@ function makeTable(data) {
                 deleteBtn.innerHTML='Delete Fighter';
                 editBtn.innerHTML = 'Edit Fighter';
                 deleteTd.appendChild(deleteBtn);
-                deleteTd.appendChild(editBtn);
+                editTd.appendChild(editBtn);
                 tr.appendChild(deleteTd);
                 tr.appendChild(editBtn);
 
@@ -54,23 +55,25 @@ function makeTable(data) {
         
 }
 
-function login() {
-    axios.get('/managerapp/manager')
-    .then(response => {
+function validationCheck() {
+    axios.get("/managerapp/manager")
+    .then(response => {console.log(response.data); login(response.data);});
+}
 
-        response.data.forEach(manager => {
+function login(data) {
+    let manager = data;
+    let typedUsername = document.getElementById("username");
+    let typedPassword = document.getElementById("password");
 
-            let typedUsername = document.getElementById("username");
-            let typedPassword = document.getElementById("password");
+        for (x=0; x < manager.length; x++)
 
-            if (typedUsername.value===manager.username.toString() && typedPassword.value===manager.password.toString()) {
+            if (typedUsername.value===manager[x].username.toString() && typedPassword.value===manager[x].password.toString()) {
                 window.location.replace("FighterApp.html");
-                console.log(sessionStorage.setItem('managerID',manager.managerID));
+                console.log(sessionStorage.setItem('managerID',manager[x].managerID));
             } else {
                 window.alert("Please enter a valid username and password");
             }
-        }).catch(err => console.error(err))
-    })
+    
 }
 
 function addNewFighter() {

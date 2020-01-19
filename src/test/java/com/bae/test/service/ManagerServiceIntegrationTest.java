@@ -62,7 +62,7 @@ public class ManagerServiceIntegrationTest {
 	}
 
 	@Test
-	public void testUpdateDuck() {
+	public void testUpdateManager() {
 		Manager newManager = new Manager("4321");
 		newManager.setManagerID(this.testManagerWithID.getManagerID());
 		Manager updatedManager = new Manager(newManager.getUsername());

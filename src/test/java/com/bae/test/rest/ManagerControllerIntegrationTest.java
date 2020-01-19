@@ -68,16 +68,6 @@ public class ManagerControllerIntegrationTest {
 		this.mock.perform(request(HttpMethod.DELETE, "/managerapp/manager/" + this.managerID)).andExpect(status().isOk());
 	}
 	
-//	@Test
-//	public void testGetAllManagers() throws Exception {
-//		List<Manager> managerList = new ArrayList<>();
-//		managerList.add(this.testManagerWithID);
-//		
-//		String content = this.mock.perform(request(HttpMethod.GET, "/managerapp/manager").accept(MediaType.APPLICATION_JSON))
-//						.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-//		
-//		assertEquals(this.mapper.writeValueAsString(managerList), content);
-//	}
 	
 
 }

@@ -68,12 +68,6 @@ public class Fighters {
 		this.weight = weight;
 	}
 
-	@Override
-	public String toString() {
-		return "Fighter [ID=" + fighterID + ", firstName=" + firstName + ", lastName=" + lastName + ", height=" + height
-				+ ", weight=" + weight + "]";
-	}
-
 
 	@Override
 	public boolean equals(Object obj) {
