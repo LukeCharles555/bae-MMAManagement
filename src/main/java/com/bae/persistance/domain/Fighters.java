@@ -68,23 +68,6 @@ public class Fighters {
 		this.weight = weight;
 	}
 
-	@Override
-	public String toString() {
-		return "Fighter [ID=" + fighterID + ", firstName=" + firstName + ", lastName=" + lastName + ", height=" + height
-				+ ", weight=" + weight + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((fighterID == null) ? 0 : fighterID.hashCode());
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + height;
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + weight;
-		return result;
-	}
 
 	@Override
 	public boolean equals(Object obj) {

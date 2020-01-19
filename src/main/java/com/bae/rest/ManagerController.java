@@ -46,10 +46,10 @@ public class ManagerController {
 		return this.managerService.addNewManager(fighter);
 	}
 	
-	@PutMapping("/manager/{managerID}")
-	public Manager updateManager(@PathParam("managerID") Long managerID, @RequestBody Manager manager) {
-		return this.managerService.updateManager(manager, managerID);
-	}
+//	@PutMapping("/manager/{managerID}")
+//	public Manager updateManager(@PathParam("managerID") Long managerID, @RequestBody Manager manager) {
+//		return this.managerService.updateManager(manager, managerID);
+//	}
 	
 	@DeleteMapping("/manager/{managerID}")
 	public String deleteManager(@PathVariable(value = "managerID") Long managerID) {

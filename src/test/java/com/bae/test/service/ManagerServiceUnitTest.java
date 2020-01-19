@@ -1,8 +1,11 @@
 package com.bae.test.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -18,15 +21,20 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.bae.persistance.domain.Fighters;
 import com.bae.persistance.domain.Manager;
 import com.bae.persistance.repository.ManagerRepository;
 import com.bae.service.ManagerService;
+import com.bae.service.FighterService;
 
 @RunWith(SpringRunner.class)
 public class ManagerServiceUnitTest {
 
 	@InjectMocks
 	private ManagerService service;
+	
+	@InjectMocks
+	private FighterService fighterService;
 	
 	@Mock
 	private ManagerRepository repo;
@@ -41,6 +49,8 @@ public class ManagerServiceUnitTest {
 	
 	@Before
 	public void init() {
+		this.repo.deleteAll();
+		
 		this.managerList = new ArrayList<>();
 		this.managerList.add(testManager);
 		this.testManager = new Manager("Luke");
@@ -91,7 +101,8 @@ public class ManagerServiceUnitTest {
 	}
 	
 	@Test
-	public void addFighterToManagerTest() {
-		
+	public void testGetManagerByID() {
+		assertEquals(this.service.getManagerByID(this.testManagerWithID.getManagerID()), null);
 	}
+
 }

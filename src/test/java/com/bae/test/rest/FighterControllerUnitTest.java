@@ -81,16 +81,4 @@ public class FighterControllerUnitTest {
 		verify(service, times(1)).getAllFighters();
 	}
 	
-	@Test
-	public void updateFightersTest() {
-		Fighters newFighter = new Fighters("Mr", "T", 70, 200);
-		Fighters updatedFighter = new Fighters(newFighter.getFirstName(), newFighter.getLastName(), newFighter.getHeight(), newFighter.getWeight());
-		updatedFighter.setFighterID(this.fighterID);
-		
-		when(this.service.updateFighter(newFighter, this.fighterID)).thenReturn(updatedFighter);
-		
-		assertEquals(updatedFighter, this.controller.updateFighter(this.fighterID, newFighter));
-		
-		verify(this.service, times(1)).updateFighter(newFighter, this.fighterID);
-	}
 }
