@@ -132,7 +132,7 @@ function signOut() {
 }
 
 function showManagerInApp() {
-    axios.get('http://localhost:8181/managerapp/manager')
+    axios.get('/managerapp/manager')
     .then(response => {
 
         response.data.forEach(manager => {
@@ -212,6 +212,7 @@ function popFunction(data) {
         .catch(error =>
             console.log(error)
         );
+        window.location = window.location;
     }
 }
 
