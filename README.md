@@ -84,15 +84,15 @@ This application can be deployed locally and externally through a virtual machin
 
 ### Wireframes
 
-Login
+**Login**
 
 ![alt text](https://github.com/LukeCharles555/bae-MMAManagement/blob/development/Documentation/loginWireframe.png)
 
-Fighter App
+**Fighter App**
 
 ![alt text](https://github.com/LukeCharles555/bae-MMAManagement/blob/development/Documentation/FighterAppWireframe.png)
 
-Fighter Statistics
+**Fighter Statistics**
 
 ![alt text](https://github.com/LukeCharles555/bae-MMAManagement/blob/development/Documentation/FighterStatsWireframe.png)
 
