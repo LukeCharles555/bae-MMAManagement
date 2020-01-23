@@ -1,5 +1,5 @@
 function readAll() {
-    axios.get('/mmaManagement/fighterapp/fighters')
+    axios.get('/fighterapp/fighters')
     .then(response => {console.log(response.data); makeTable(response.data);});
 }
 
@@ -56,7 +56,7 @@ function makeTable(data) {
 }
 
 function validationCheck() {
-    axios.get("/mmaManagement/managerapp/manager")
+    axios.get("/managerapp/manager")
     .then(response => {console.log(response.data); login(response.data);});
 }
 
@@ -94,7 +94,7 @@ function addNewFighter() {
     } else {
 
         JSON.stringify(newFighter);
-        axios.patch('/mmaManagement/managerapp/update/' + sessionStorage.getItem('managerID'), newFighter)
+        axios.patch('/managerapp/update/' + sessionStorage.getItem('managerID'), newFighter)
         .then(response =>
             console.log(response)
         )
@@ -109,7 +109,7 @@ function capitaliseWord(word) {
 }
 
 function showFighterInApp() {
-    axios.get('/mmaManagement/managerapp/manager/' + sessionStorage.getItem('managerID'))
+    axios.get('/managerapp/manager/' + sessionStorage.getItem('managerID'))
     .then(response => {
 
         response.data.fighters.forEach(fighter => {
@@ -132,7 +132,7 @@ function signOut() {
 }
 
 function showManagerInApp() {
-    axios.get('/mmaManagement/managerapp/manager')
+    axios.get('/managerapp/manager')
     .then(response => {
 
         response.data.forEach(manager => {
@@ -182,7 +182,7 @@ function deleteFighterValue(data) {
     let confirmMessage = window.confirm("Are you sure you want to delete this fighter?");
 
     if (confirmMessage) {
-        axios.delete('/mmaManagement/fighterapp/fighters/' + fighterID)
+        axios.delete('/fighterapp/fighters/' + fighterID)
         .then(response => { console.log(response); })
         window.location = window.location;
     } else {}
@@ -205,7 +205,7 @@ function popFunction(data) {
     }
     
     if(inputWeight) {
-        axios.patch('/mmaManagement/fighterapp/update/' + fighterID, inputWeight)
+        axios.patch('/fighterapp/update/' + fighterID, inputWeight)
         .then(response =>
             console.log(response)
         )
