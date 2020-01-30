@@ -1,7 +1,7 @@
 FROM maven:latest AS build
 copy . /build
 WORKDIR /build
-RUN mvn clean package -DskipTests=true
+RUN mvn clean install package -DskipTests=true
 
 FROM openjdk:8-jdk-alpine AS run
 WORKDIR ~/bae-MMAManagement
