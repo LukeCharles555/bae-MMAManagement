@@ -16,5 +16,10 @@ pipeline {
                 sh "mvn package -DskipTests=true"
             }
         }
+        stage('--deploy--') {
+            steps {
+                sh "mvn deploy -DskipTests=true"
+            }
+        }
     }
 }
