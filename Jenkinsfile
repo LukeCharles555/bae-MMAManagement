@@ -3,17 +3,22 @@ pipeline {
     stages {
         stage('---clean---') {
             steps {
-                sh "mvn clean"
+                sh "mvn clean -DskipTests=true"
             }
         }
         stage('--test--') {
             steps {
-                sh "mvn test"
+                sh "mvn test -DskipTests=true"
             }
         }
         stage('--package--') {
             steps {
-                sh "mvn package"
+                sh "mvn package -DskipTests=true"
+            }
+        }
+        stage('--deploy--') {
+            steps {
+                sh "mvn deploy -DskipTests=true"
             }
         }
     }
