@@ -1,8 +1,4 @@
-FROM maven:latest AS build
-copy . /build
-WORKDIR /build
-
-FROM openjdk:8-jdk-alpine AS run
-WORKDIR ~/bae-MMAManagement
-COPY --from=0 /build/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","app.jar"]
+FROM openjdk:8
+EXPOSE 8090
+ADD target/application.jar application.jar
+ENTRYPOINT ["java","-jar","application.jar"]
