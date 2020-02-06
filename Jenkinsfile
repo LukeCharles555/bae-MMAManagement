@@ -16,6 +16,11 @@ pipeline {
                 sh "mvn package"
             }
         }
+        stage('--report--') {
+            steps {
+                sh "mvn surefire-report:report"
+            }
+        }
         stage('--deploy--') {
             steps {
                 sh "mvn deploy"
