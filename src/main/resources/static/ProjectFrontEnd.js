@@ -1,4 +1,4 @@
-let contextPath = "/mmaManagement";
+let contextPath = "";
 
 function readAll() {
     axios.get(contextPath + '/fighterapp/fighters')
@@ -59,23 +59,35 @@ function makeTable(data) {
 
 function validationCheck() {
     axios.get(contextPath + "/managerapp/manager")
-    .then(response => {console.log(response.data); login(response.data);});
+    .then(response => {login(response.data);});
 }
 
-function login(data) {
-    let manager = data;
+function login(manager) {
+    // let manager = data;
     let typedUsername = document.getElementById("username");
     let typedPassword = document.getElementById("password");
 
-        for (x=0; x < manager.length; x++)
+        for (let managerName=0; managerName < manager.length; managerName++) {
 
-            if (typedUsername.value===manager[x].username.toString() && typedPassword.value===manager[x].password.toString()) {
-                window.location.replace("FighterApp.html");
-                console.log(sessionStorage.setItem('managerID',manager[x].managerID));
-            } else {
-                window.alert("Please enter a valid username and password");
-            }
-    
+            if (typedUsername.value===manager[managerName].username.toString() && hash(typedPassword.value)===manager[managerName].password.toString()) {
+                sessionStorage.setItem('managerID',manager[managerName].managerID);
+                window.location = "FighterApp.html";
+            } 
+        }    
+}
+
+function hash(s) {
+    let a = 1, c = 0, h, o;
+    if (s) {
+        a = 0;
+        for (h = s.length - 1; h >= 0; h--) {
+            o = s.charCodeAt(h);
+            a = (a<<6&268435455) + o + (o<<14);
+            c = a & 266338304;
+            a = c!==0?a^c>>21:a;
+        }
+    }
+    return String(a);
 }
 
 function addNewFighter() {
