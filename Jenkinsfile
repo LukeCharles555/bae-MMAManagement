@@ -28,7 +28,8 @@ pipeline {
         }
         stage('--testing environment creation--') {
             steps {
-                sh "ssh -tt -i 'ec2jenkins.pem' ubuntu@ec2-18-130-4-97.eu-west-2.compute.amazonaws.com"
+                sh "chmod 777 'ec2jenkins.pem'"
+                sh "ssh -tt -o StrictHostKetChecking=no -i 'ec2jenkins.pem' ubuntu@ec2-18-130-4-97.eu-west-2.compute.amazonaws.com"
                 sh "docker stop spring-app"
                 sh "docker rm spring-app"
                 sh "mvn dependency:get -DremoteRepositories=http://3.11.84.155:8081/repository/mmamanagement-hosted -DgroupId=com.bae -DartifactId=mmaManagement -Dversion=0.0.1-SNAPSHOT -Dtransitive=false"
