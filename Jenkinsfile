@@ -28,7 +28,7 @@ pipeline {
         }
         stage('--testing environment creation--') {
             steps {
-                sh "chmod 777 'ec2jenkins.pem'"
+                sh "chmod 777 ec2jenkins.pem"
                 sh "ssh -tt -o StrictHostKetChecking=no -i 'ec2jenkins.pem' ubuntu@ec2-18-130-4-97.eu-west-2.compute.amazonaws.com"
                 sh "docker stop spring-app"
                 sh "docker rm spring-app"
