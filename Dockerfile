@@ -1,4 +1,4 @@
 FROM openjdk:8
 EXPOSE 8090
-ADD target/application.jar application.jar
-ENTRYPOINT ["java","-jar","application.jar"]
+ADD target/mmaManagement-0.0.1-SNAPSHOT.jar mmaManagement-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","mmaManagement-0.0.1-SNAPSHOT.jar"]
