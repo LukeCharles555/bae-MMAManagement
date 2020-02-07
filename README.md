@@ -50,7 +50,10 @@ This image shows our actual pipeline model. However, the idea has evolved from t
 1. Created a VPC with 3 subnets in each availability zone
 2. Created IAM roles for back-end, front-end and RDS instances
 3. Created RDS database with specific RDS IAM role that allows access to database
-4. Created back-end, front-end test instances. Security groups on backend:
+4. Created back-end, front-end test instances
+
+Security groups on backend:
+
 Back-end to RDS:
 * Allows access to MYSQL database on your IP only
 * Allows custom TCP request from anywhere, with a port specification of back-end port
@@ -59,7 +62,9 @@ Back-end to front-end:
 * HTTP & HTTPS requests specified to front-end port from anywhere
 * Custom TCP requests from anywhere
 * be able to SSH in
+
 Security groups on front-end:
+
 Front-end to back-end:
 * HTTP & HTTPS requests specified to front-end port from anywhere
 * Custom TCP requests from anywhere
@@ -94,7 +99,7 @@ We have Jenkins which automates our build process when a push is made to GitHub.
 3. Maven package
 4. Maven surefire-report
 5. Maven deploy to test environment
-6. Mavane deploy to live environment
+6. Maven deploy to live environment
 
 ## Improvements for the future
 * Use DockerHub and Nexus as opposed to just Nexus. This is so if nexus fails, DockerHub can be used as a backup.
